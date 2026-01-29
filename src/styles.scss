@@ -1,0 +1,82 @@
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+@import 'bootstrap/scss/bootstrap';
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  margin: 0;
+  height: 100%;
+  background: url('/assets/img/onboarding-bg.jpg') center / cover no-repeat fixed;
+  font-family: "Acumin Variable Concept", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+}
+/* You can add global styles to this file, and also import other style files */
+
+/* Design tokens */
+:root {
+  --pantone-663: #E2E2E2;
+  --pantone-3015: #0E59A5;
+  --pantone-292: #5BA5FF;
+}
+
+/* Global typography */
+h1, h2, h3, h4 {
+  color: var(--pantone-292);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+p.subtitle {
+  color: var(--pantone-3015);
+}
+a {
+  color: var(--pantone-3015);
+}
+
+/* Common UI primitives */
+.glass-input {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(91,165,255,0.45), rgba(14,89,165,0.36));
+  border: none;
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+}
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.95);
+}
+.cta {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(14, 89, 165, 0.42), rgba(14, 89, 165, 0.36));
+  color: #ffffff;
+  border: none;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.divider .line,
+.divider .dot {
+  background: rgba(33,37,41,0.85);
+}

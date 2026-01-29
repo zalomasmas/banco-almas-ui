@@ -1,0 +1,40 @@
+<div class="memories-page">
+  <div class="container py-4">
+    <div class="header text-center">
+      <div class="brand">Explora tus recuerdos</div>
+      <div class="segmented">
+        <a class="segment" routerLink="/app/recuerdos/nodos">Nodos</a>
+        <button type="button" class="segment active">Calendario</button>
+      </div>
+    </div>
+
+    <div class="calendar">
+      <div class="cal-header">
+        <span class="month">{{ monthLabel() }}</span>
+        <div class="nav">
+          <button class="nav-btn" (click)="prevMonth()"><span class="material-icons">chevron_left</span></button>
+          <button class="nav-btn" (click)="nextMonth()"><span class="material-icons">chevron_right</span></button>
+        </div>
+      </div>
+      <div class="cal-weekdays">
+        <div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
+      </div>
+      <div class="cal-grid">
+        @for (d of days(); track d.key) {
+          <div class="day" [class.muted]="!d.inMonth" (click)="d.inMonth && dayClick($event, d.key)">
+            <div class="num">{{ d.num }}</div>
+            @if (d.key && itemsFor(d.key).length) {
+              <div class="thumb" [style.backgroundImage]="'url(' + getImageUrl(itemsFor(d.key)[0]) + ')'"></div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (overlayOpen()) {
+      <div class="overlay">
+        <div #calNetwork class="cal-network-overlay"></div>
+      </div>
+    }
+  </div>
+</div>

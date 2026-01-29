@@ -1,0 +1,9 @@
+<div class="container py-4">
+  <h3>Responder</h3>
+  <textarea class="form-control" rows="5" [(ngModel)]="text" placeholder="Tu respuesta"></textarea>
+  <div class="d-flex gap-2 mt-3">
+    <button class="btn btn-primary" (click)="save()">Guardar</button>
+    <button class="btn btn-outline-success" (click)="saveAsMemory()">Guardar como recuerdo</button>
+  </div>
+  <a class="btn btn-link mt-3" routerLink="/app/estado-del-alma/preguntas">Volver</a>
+</div>

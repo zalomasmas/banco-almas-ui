@@ -1,0 +1,38 @@
+<div class="top-brand text-center">
+  <div class="icon"><img src="/assets/img/nubecandado.png" alt="lifebank" /></div>
+  <div class="brand-wrap">
+    <div class="brand">lifebank</div>
+    <div class="tagline">The vault of your essence</div>
+  </div>
+</div>
+<div class="container text-center">
+  <form id="registerForm" [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <input class="glass-input" placeholder="Nombre de usuario" formControlName="name" />
+    <input class="glass-input" placeholder="Email" formControlName="email" type="email" />
+    <input class="glass-input" placeholder="Contraseña" formControlName="password" type="password" />
+  </form>
+  <div class="actions-block">
+    <button class="cta" type="submit" form="registerForm" [disabled]="form.invalid">
+      <span>REGISTRARTE</span>
+      <span class="bubble"><span class="material-symbols-rounded">arrow_forward</span></span>
+    </button>
+    <div class="login-hint">
+      ¿Ya tienes una cuenta? <a class="login-link" routerLink="/auth/login">INGRESA</a>
+    </div>
+    <div class="divider">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+    <div class="oauth-actions">
+      <button type="button" class="oauth-btn google">
+        <span class="icon google-icon"></span>
+        <span class="label">Continuar con Google</span>
+      </button>
+      <button type="button" class="oauth-btn apple">
+        <span class="icon apple-icon"></span>
+        <span class="label">Continuar con Apple</span>
+      </button>
+    </div>
+  </div>
+</div>

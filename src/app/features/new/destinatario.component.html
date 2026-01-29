@@ -1,0 +1,27 @@
+<div class="new-page">
+  <div class="container py-4">
+    <div class="top-bar d-flex align-items-center mb-2">
+      <a class="back" routerLink="/app/home"><span class="material-icons">arrow_back</span></a>
+      <div class="brand ms-2">Crear nuevo recuerdo</div>
+    </div>
+    <h2 class="title text-center mb-3">Genial! ¿A quién/es te gustaría dejarle este mensaje?</h2>
+    <div class="cards d-grid gap-3">
+      <button class="new-card" (click)="set('amigos')" [class.selected]="wiz.nodeId==='amigos'">
+        <span class="icon material-icons">group</span>
+        <span class="label">Amigos</span>
+      </button>
+      <button class="new-card" (click)="set('familia')" [class.selected]="wiz.nodeId==='familia'">
+        <span class="icon material-icons">home</span>
+        <span class="label">Familia</span>
+      </button>
+      <button class="new-card" (click)="set('mascota')" [class.selected]="wiz.nodeId==='mascota'">
+        <span class="icon material-icons">pets</span>
+        <span class="label">Mascota</span>
+      </button>
+      <button class="new-card" (click)="set('otros')" [class.selected]="wiz.nodeId==='otros'">
+        <span class="icon material-icons">add</span>
+        <span class="label">Otros...</span>
+      </button>
+    </div>
+  </div>
+</div>

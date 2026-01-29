@@ -1,0 +1,12 @@
+.app-navbar {
+  background: linear-gradient(180deg, rgba(14, 89, 165, 0.62), rgba(14, 89, 165, 0.48));
+  color: #ffffff;
+  backdrop-filter: blur(6px);
+}
+ .app-navbar .navbar-brand,
+ .app-navbar .nav-link {
+   color: #ffffff;
+ }
+ .app-main {
+  background: transparent;
+ }

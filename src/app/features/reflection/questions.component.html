@@ -1,0 +1,13 @@
+<div class="container py-4">
+  <h3>Estado del alma</h3>
+  @if (current()) {
+    <div class="card p-3">
+      <div>Pregunta {{ index()+1 }}/{{ list().length }}</div>
+      <h5 class="mt-2">{{ current()?.text }}</h5>
+      <div class="d-flex gap-2 mt-3">
+        <a class="btn btn-primary" [routerLink]="['/app/estado-del-alma/responder', current()?.id]">Responder</a>
+        <button class="btn btn-outline-secondary" (click)="next()">Cambiar pregunta</button>
+      </div>
+    </div>
+  }
+</div>

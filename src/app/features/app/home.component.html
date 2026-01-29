@@ -1,0 +1,59 @@
+<div class="home">
+  <div class="top-brand text-center">
+    <div class="icon"><img src="/assets/img/nubecandado.png" alt="lifebank" /></div>
+    <div class="brand-wrap">
+      <div class="brand">lifebank</div>
+      <div class="tagline">The vault of your essence</div>
+    </div>
+  </div>
+  <div class="container py-4">
+    <div class="page-header">
+      <div class="brand">lifebank</div>
+      <h2 class="page-title">Hola, Alma.</h2>
+      <h3 class="page-subtitle">¿Qué deseas hacer hoy?</h3>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+      <div class="col">
+        <a class="home-card" routerLink="/app/nuevo/destinatario">
+          <div class="icon"><span class="material-icons">edit</span></div>
+          <div class="info">
+            <div class="label">Crear un nuevo recuerdo</div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a class="home-card" routerLink="/app/recuerdos/nodos">
+          <div class="icon"><span class="material-icons">star</span></div>
+          <div class="info">
+            <div class="label">Explorar tus recuerdos</div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a class="home-card" routerLink="/app/estado-del-alma/preguntas">
+          <div class="icon"><span class="material-icons">favorite</span></div>
+          <div class="info">
+            <div class="label">Estado del Alma</div>
+            <div class="sub">Reflexioná sobre tu estado emocional</div>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a class="home-card" routerLink="/app/legado/config">
+          <div class="icon"><span class="material-icons">shield</span></div>
+          <div class="info">
+            <div class="label">Configuracion de legado</div>
+            <div class="sub">Gestioná quién accederá a tus recuerdos después de tu partida.</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="question-card mt-4">
+      <div class="question-header">Tu pregunta del dia de hoy es:</div>
+      <a class="question-body" routerLink="/app/estado-del-alma/preguntas">
+        <span class="question-text">¿Qué recuerdo te gustaría revivir hoy?</span>
+        <span class="question-action"><span class="material-icons">chevron_right</span></span>
+      </a>
+    </div>
+  </div>
+</div>

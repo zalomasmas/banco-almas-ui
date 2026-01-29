@@ -1,0 +1,16 @@
+<div class="d-flex flex-column min-vh-100">
+  <nav class="d-none d-md-flex navbar navbar-expand app-navbar px-3">
+    <a class="navbar-brand" routerLink="/app/home">Banco de Almas</a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" routerLink="/app/home">Home</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/app/recuerdos/nodos">Mis recuerdos</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/app/nuevo/destinatario">Nuevo</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/app/chatbot/chat">Chatbot</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/app/ajustes">Ajustes</a></li>
+    </ul>
+  </nav>
+  <main class="flex-grow-1 app-main">
+    <router-outlet></router-outlet>
+  </main>
+  <app-bottom-nav class="d-md-none"></app-bottom-nav>
+</div>

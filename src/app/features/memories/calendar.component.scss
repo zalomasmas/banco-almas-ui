@@ -1,0 +1,117 @@
+ .memories-page {
+   color: #ffffff;
+ }
+ .header .brand {
+   color: rgba(255, 255, 255, 0.85);
+   margin-bottom: 10px;
+ }
+ .segmented {
+   display: inline-flex;
+   border: 1.5px solid rgba(255, 255, 255, 0.25);
+   border-radius: 999px;
+   overflow: hidden;
+ }
+ .segment {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   min-width: 120px;
+   padding: 10px 16px;
+   background: transparent;
+   color: #ffffff;
+   border: none;
+   text-decoration: none;
+ }
+ .segment.active {
+   background: #ffffff;
+  color: var(--pantone-3015);
+ }
+ .calendar {
+   margin-top: 24px;
+ }
+ .cal-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: #ffffff;
+   margin-bottom: 12px;
+ }
+.cal-header .month {
+  color: var(--pantone-3015);
+   font-weight: 700;
+ }
+ .nav .nav-btn {
+   background: transparent;
+   border: none;
+  color: var(--pantone-3015);
+   padding: 6px;
+ }
+ .cal-weekdays {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   color: rgba(255, 255, 255, 0.85);
+   margin-bottom: 8px;
+   text-align: center;
+ }
+ .cal-grid {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   gap: 10px 8px;
+ }
+ .day {
+   position: relative;
+   min-height: 56px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 12px;
+ }
+ .day.muted {
+   opacity: 0.3;
+ }
+ .day .num {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   font-weight: 700;
+   color: #ffffff;
+   z-index: 2;
+ }
+ .day .thumb {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   width: 36px;
+   height: 36px;
+   border-radius: 50%;
+   background-size: cover;
+   background-position: center;
+   border: 1px solid rgba(255, 255, 255, 0.25);
+   opacity: 0.35;
+   z-index: 1;
+ }
+ .overlay {
+   position: fixed;
+   left: 0;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 1000;
+ }
+.cal-network-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
+}
+ @media (min-width: 768px) {
+   .container {
+     max-width: 720px;
+     margin-left: auto;
+     margin-right: auto;
+   }
+ }

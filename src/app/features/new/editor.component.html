@@ -1,0 +1,41 @@
+<div class="new-page">
+  <div class="container py-4">
+    <div class="top-bar d-flex align-items-center mb-2">
+      <a class="back" routerLink="/app/nuevo/privacidad-fecha"><span class="material-icons">arrow_back</span></a>
+      <div class="brand ms-2">Crear nuevo recuerdo</div>
+    </div>
+    <h2 class="title text-center mb-3">Dejá tu recuerdo</h2>
+
+    <div class="editor-card">
+      <div class="field">
+        <div class="label">
+          <span class="material-icons">edit</span>
+          <span>Titulo</span>
+        </div>
+        <input class="input" placeholder=" " [(ngModel)]="wiz.title" />
+        <div class="underline"></div>
+      </div>
+      <textarea class="text" rows="6" placeholder="¿Que deseas recordar hoy?" [(ngModel)]="wiz.text"></textarea>
+    </div>
+
+    <div class="media-toolbar">
+      <button class="tool" type="button" (click)="galleryInput.click()">
+        <span class="material-icons">image</span>
+      </button>
+      <button class="tool" type="button" (click)="cameraInput.click()">
+        <span class="material-icons">photo_camera</span>
+      </button>
+      <button class="tool" type="button" (click)="toggleRecording()">
+        <span class="material-icons">{{ isRecording ? 'stop' : 'mic' }}</span>
+      </button>
+      <input #galleryInput class="d-none" type="file" accept="image/*" multiple (change)="onImages($event)" />
+      <input #cameraInput class="d-none" type="file" accept="image/*" capture="environment" (change)="onImages($event)" />
+    </div>
+    <div class="attachments-count">Adjuntos: {{ wiz.attachments.length }}</div>
+
+    <a class="cta" routerLink="/app/nuevo/confirmacion">
+      <span>Guardar recuerdo</span>
+      <span class="action"><span class="material-icons">arrow_forward</span></span>
+    </a>
+  </div>
+</div>

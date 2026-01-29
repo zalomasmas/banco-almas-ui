@@ -1,0 +1,23 @@
+@if (memory(); as mem) {
+  <div class="container py-4">
+    <a class="btn btn-link" [routerLink]="getBackLink()">Volver</a>
+    <div class="detail-card">
+      <div class="detail-header">
+        <div class="meta">
+          <div class="date">{{ mem.date | date:'dd/MM/yyyy' }}</div>
+          <div class="node">{{ mem.nodeId }}</div>
+        </div>
+        <a class="close" [routerLink]="getBackLink()"><span class="material-icons">close</span></a>
+      </div>
+      <div class="hero" [style.backgroundImage]="'url(' + getImageUrl(mem) + ')'"></div>
+      <div class="content">
+        <h3 class="title">{{ mem.title }}</h3>
+        <p class="text">{{ mem.text }}</p>
+        <div class="actions">
+          <button class="btn btn-outline-secondary">Editar</button>
+          <a class="btn btn-danger">Aceptar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+}

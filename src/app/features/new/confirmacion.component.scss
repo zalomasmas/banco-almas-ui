@@ -1,0 +1,40 @@
+ .new-page {
+   color: #ffffff;
+ }
+ .brand {
+   color: rgba(255, 255, 255, 0.85);
+   font-size: 0.95rem;
+ }
+ .message {
+   font-weight: 800;
+   margin: 2rem 0;
+ }
+ .cta {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   text-decoration: none;
+   color: #ffffff;
+  background: linear-gradient(180deg, rgba(91,165,255,0.45), rgba(14,89,165,0.36));
+   border-radius: 18px;
+   padding: 14px 16px;
+ }
+ .cta .action {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 36px;
+   height: 36px;
+   border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(91,165,255,0.55));
+ }
+ .cta .action .material-icons {
+   color: #ffffff;
+ }
+ @media (min-width: 768px) {
+   .container {
+     max-width: 720px;
+     margin-left: auto;
+     margin-right: auto;
+   }
+ }

@@ -1,0 +1,16 @@
+<div class="container py-4">
+  <h3>Recuerdos compartidos</h3>
+  @if (items().length) {
+    <div class="list-group">
+      @for (m of items(); track m.id) {
+        <div class="list-group-item">
+          <strong>{{ m.title }}</strong>
+          <div class="small text-muted">{{ m.date | date:'shortDate' }}</div>
+          <p class="mb-0">{{ m.text }}</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <p>No hay elementos para este token.</p>
+  }
+</div>

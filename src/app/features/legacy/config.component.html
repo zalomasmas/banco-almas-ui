@@ -1,0 +1,17 @@
+<div class="container py-4">
+  <h3>Legado</h3>
+  <div class="card p-3">
+    <div class="d-flex gap-2">
+      <input class="form-control" placeholder="Nombre heredero" [(ngModel)]="name" />
+      <input class="form-control" placeholder="Email" [(ngModel)]="email" type="email" />
+      <button class="btn btn-secondary" (click)="add()">Añadir heredero</button>
+    </div>
+    <ul class="mt-3">
+      @for (c of settings.contacts; track c.id) {
+        <li>{{ c.name }} - {{ c.email }}</li>
+      }
+    </ul>
+    <textarea class="form-control mt-3" rows="3" placeholder="Mensaje de despedida" [(ngModel)]="settings.farewellMessage"></textarea>
+    <button class="btn btn-success mt-3" (click)="save()">Confirmar</button>
+  </div>
+</div>

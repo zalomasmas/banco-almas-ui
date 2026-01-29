@@ -1,0 +1,17 @@
+<div class="container py-4">
+  <h3>Chatbot</h3>
+  <div class="card p-3" style="min-height: 200px;">
+    @for (m of svc.getThread().messages; track m.id) {
+      <div [class]="m.role === 'user' ? 'text-end' : 'text-start'">
+        <span class="badge bg-secondary">{{ m.role === 'user' ? 'Tú' : 'Bot' }}</span>
+        <div class="mt-1">{{ m.text }}</div>
+      </div>
+      <hr />
+    }
+  </div>
+  <div class="input-group mt-3">
+    <input class="form-control" [(ngModel)]="input" (keyup.enter)="send()" placeholder="Escribe un mensaje" />
+    <button class="btn btn-primary" (click)="send()">Enviar</button>
+  </div>
+  <button class="btn btn-outline-success mt-3" (click)="save()">Guardar conversación como recuerdo</button>
+</div>

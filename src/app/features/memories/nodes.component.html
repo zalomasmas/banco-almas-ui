@@ -1,0 +1,20 @@
+<div class="memories-page">
+  <div class="container py-4">
+    <div class="header text-center">
+      <div class="brand">Explora tus recuerdos</div>
+      <div class="segmented">
+        <button type="button" class="segment active">Nodos</button>
+        <a class="segment" routerLink="/app/recuerdos/calendario">Calendario</a>
+      </div>
+    </div>
+
+    <div class="orbit">
+      <div class="center-cloud" (click)="toggleOptions()">
+        <svg width="82" height="57" viewBox="0 0 82 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M63.4219 56.3752H21.7812C15.9452 56.3752 10.5127 54.3621 6.48473 50.7041C2.30305 46.9068 0 41.6409 0 35.8752C0 30.0167 2.14449 24.9654 6.20125 21.2658C9.39316 18.3525 13.7478 16.3714 18.5941 15.6011C20.1085 11.6478 22.6002 8.14279 25.8364 5.41352C30.0709 1.87246 35.3145 0.00023321 41 0.00023321C47.3955 -0.0275996 53.5503 2.43685 58.1591 6.87094C62.493 11.0446 65.3005 16.6853 66.3447 23.2805C74.242 24.4497 82 29.8133 82 39.719C82 45.0666 80.0397 49.4533 76.3289 52.4082C73.0681 55.0027 68.6061 56.3752 63.4219 56.3752Z" fill="#4F468C"/>
+        </svg>
+      </div>
+      <div #network class="network-layer"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+.container {
+  color: #ffffff;
+}
+.form-control {
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(91,165,255,0.45), rgba(14,89,165,0.36));
+  border: none;
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+}
+.form-control::placeholder {
+  color: rgba(255,255,255,0.95);
+}
+.btn-primary {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(14, 89, 165, 0.62), rgba(14, 89, 165, 0.48));
+  border: none;
+}
+.btn-outline-success {
+  border-radius: 999px;
+  border-color: var(--pantone-3015);
+  color: var(--pantone-3015);
+}
+.btn-link {
+  color: var(--pantone-3015);
+}

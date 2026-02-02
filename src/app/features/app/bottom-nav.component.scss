@@ -4,8 +4,12 @@
    align-items: center;
    gap: 8px;
    padding: 10px 8px 12px;
-  background: linear-gradient(180deg, rgba(14, 89, 165, 0.62), rgba(14, 89, 165, 0.48));
+  background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.72));
    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.25);
  }
  .mobile-nav .nav-item {
    display: flex;
@@ -16,24 +20,27 @@
    text-decoration: none;
    min-width: 56px;
  }
- .mobile-nav .material-icons {
-   font-size: 26px;
-   color: #ffffff;
- }
+.mobile-nav .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-nav .icon .material-icons {
+  font-size: 36px;
+  color: #ffffff;
+  text-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(14, 89, 165, 0.35);
+}
+.mobile-nav .nav-item.active .icon .material-icons {
+  color: #5BA5FF;
+}
  .mobile-nav .label {
-   font-size: 0.85rem;
-   margin-top: 4px;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  color: #0E59A5;
+  font-weight: 600;
  }
- .mobile-nav .nav-new .new-circle {
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   width: 36px;
-   height: 36px;
-   border-radius: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(91,165,255,0.55));
-   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
- }
- .mobile-nav .nav-new .material-icons {
-   font-size: 24px;
- }
+.mobile-nav .nav-new .material-icons {
+  font-size: 36px;
+}

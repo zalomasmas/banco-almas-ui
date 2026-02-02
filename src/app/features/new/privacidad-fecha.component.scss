@@ -51,6 +51,34 @@
    font-size: 0.85rem;
    margin-top: 6px;
  }
+ .glass-input-field {
+   width: min(520px, 86%);
+   margin-left: auto;
+   margin-right: auto;
+ }
+ :host ::ng-deep .glass-input-field .mat-mdc-text-field-wrapper {
+   border-radius: 999px;
+   background: linear-gradient(180deg, rgba(91,165,255,0.45), rgba(14,89,165,0.36));
+   backdrop-filter: blur(6px);
+   height: 48px;
+ }
+ :host ::ng-deep .glass-input-field .mat-mdc-input-element {
+   color: #ffffff;
+   padding: 0 12px;
+ }
+ :host ::ng-deep .glass-input-field .mat-mdc-input-element::placeholder {
+   color: rgba(255, 255, 255, 0.95);
+ }
+ :host ::ng-deep .glass-input-field .mdc-floating-label,
+ :host ::ng-deep .glass-input-field .mat-mdc-form-field-label {
+   color: rgba(255, 255, 255, 0.95) !important;
+ }
+ :host ::ng-deep .glass-input-field .mat-mdc-form-field-icon-suffix .mat-icon {
+   color: #ffffff;
+ }
+ :host ::ng-deep .glass-input-field .mat-mdc-form-field-subscript-wrapper {
+   display: none;
+ }
  .segmented {
    display: inline-flex;
    border: 1.5px solid rgba(255, 255, 255, 0.25);
@@ -62,7 +90,7 @@
    align-items: center;
    gap: 8px;
    padding: 10px 16px;
-   background: transparent;
+  background: linear-gradient(180deg, rgba(91,165,255,0.45), rgba(14,89,165,0.36));
    color: #ffffff;
    border: none;
  }
@@ -72,7 +100,9 @@
  }
  .segment .check {
    font-size: 18px;
+  display: none;
  }
+.segment.active .check { display: inline-block; }
  .cta {
    display: flex;
    justify-content: space-between;

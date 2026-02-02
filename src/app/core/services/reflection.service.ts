@@ -4,6 +4,20 @@ import { ReflectionAnswer, ReflectionQuestion } from '../models/reflection';
 const QUESTIONS_KEY = 'ba_questions';
 const ANSWERS_KEY = 'ba_answers';
 
+function randomId(): string {
+  try {
+    if (typeof crypto !== 'undefined' && typeof (crypto as any).randomUUID === 'function') {
+      return (crypto as any).randomUUID();
+    }
+  } catch {}
+  const tpl = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+  return tpl.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 @Injectable({ providedIn: 'root' })
 export class ReflectionService {
   getQuestions(): ReflectionQuestion[] {
@@ -28,7 +42,7 @@ export class ReflectionService {
   saveAnswer(questionId: string, text: string) {
     const list = this.getAnswers();
     const answer: ReflectionAnswer = {
-      id: crypto.randomUUID(),
+      id: randomId(),
       questionId,
       text,
       date: new Date().toISOString()

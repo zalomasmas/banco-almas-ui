@@ -6,16 +6,16 @@
     </div>
     <h2 class="title text-center mb-4">
       ¿Te gustaría que sea para alguna fecha en especial?
-      <span class="underline"></span>
     </h2>
 
     <div class="date-block mb-4">
-      <div class="label">Fecha</div>
-      <div class="date-input">
-        <input type="date" [(ngModel)]="dateOnly" />
-        <span class="material-icons calendar">calendar_today</span>
-      </div>
-      <div class="hint">MM/DD/YYYY</div>
+      <mat-form-field class="glass-input-field" appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" (dateChange)="onDateChange($event.value)" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
 
     <p class="mb-2 text-center">Deseás que este recuerdo solo lo vea esa persona, o esté disponible para otros también?</p>
@@ -25,6 +25,7 @@
         <span>Privado</span>
       </button>
       <button type="button" class="segment" [class.active]="wiz.isPublic" (click)="wiz.isPublic=true">
+        <span class="material-icons check">check</span>
         <span>Publico</span>
       </button>
     </div>

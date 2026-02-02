@@ -6,6 +6,20 @@ import { MediaItem } from '../models/media-item';
 const MEMORIES_KEY = 'ba_memories';
 const NODES_KEY = 'ba_nodes';
 
+function randomId(): string {
+  try {
+    if (typeof crypto !== 'undefined' && typeof (crypto as any).randomUUID === 'function') {
+      return (crypto as any).randomUUID();
+    }
+  } catch {}
+  const tpl = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+  return tpl.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 @Injectable({ providedIn: 'root' })
 export class MemoryService {
   getNodes(): MemoryNode[] {
@@ -43,7 +57,7 @@ export class MemoryService {
 
   create(data: Omit<Memory, 'id' | 'createdAt'>) {
     const list = this.list();
-    const item: Memory = { ...data, id: crypto.randomUUID(), createdAt: new Date().toISOString() };
+    const item: Memory = { ...data, id: randomId(), createdAt: new Date().toISOString() };
     list.unshift(item);
     localStorage.setItem(MEMORIES_KEY, JSON.stringify(list));
     return item;
@@ -76,7 +90,7 @@ export class MemoryService {
   private createBase(title: string, nodeId: string, date: Date, isPublic: boolean): Memory {
     const attachments: MediaItem[] = [];
     return {
-      id: crypto.randomUUID(),
+      id: randomId(),
       title,
       text: 'Contenido de recuerdo',
       nodeId,

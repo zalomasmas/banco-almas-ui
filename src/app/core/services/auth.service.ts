@@ -3,6 +3,20 @@ import { User } from '../models/user';
 
 const USER_KEY = 'ba_user';
 
+function randomId(): string {
+  try {
+    if (typeof crypto !== 'undefined' && typeof (crypto as any).randomUUID === 'function') {
+      return (crypto as any).randomUUID();
+    }
+  } catch {}
+  const tpl = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+  return tpl.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   userSignal = signal<User | null>(null);
@@ -24,7 +38,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const user: User = {
-      id: crypto.randomUUID(),
+      id: randomId(),
       name: email.split('@')[0],
       email,
       onboardingCompleted: false
@@ -36,7 +50,7 @@ export class AuthService {
 
   register(name: string, email: string, password: string) {
     const user: User = {
-      id: crypto.randomUUID(),
+      id: randomId(),
       name,
       email,
       onboardingCompleted: false

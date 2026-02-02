@@ -82,8 +82,11 @@
    margin-right: 16px;
  }
  .home-card .icon .material-icons {
-   font-size: 44px;
- }
+  font-size: 44px;
+  text-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(14, 89, 165, 0.35);
+}
  .home-card .info {
    display: flex;
    flex-direction: column;

@@ -1,23 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { WizardService } from './wizard.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-new-privacy',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [
+    FormsModule,
+    RouterLink,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
+  ],
   templateUrl: './privacidad-fecha.component.html',
-  styleUrl: './privacidad-fecha.component.scss'
+  styleUrl: './privacidad-fecha.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewPrivacidadFechaComponent {
+export class NewPrivacidadFechaComponent implements OnInit {
   constructor(public wiz: WizardService) {}
-  get dateOnly() {
-    return this.wiz.date.slice(0, 10);
+  selectedDate: Date | null = null;
+  ngOnInit() {
+    this.selectedDate = new Date(this.wiz.date);
   }
-  set dateOnly(d: string) {
+  onDateChange(d: Date | null) {
+    if (!d) return;
     const current = new Date(this.wiz.date);
-    const iso = new Date(`${d}T${current.toISOString().slice(11, 19)}Z`).toISOString();
+    const hours = current.toISOString().slice(11, 19);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const iso = new Date(`${y}-${m}-${day}T${hours}Z`).toISOString();
     this.wiz.date = iso;
   }
 }

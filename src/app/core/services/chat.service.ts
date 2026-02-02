@@ -4,6 +4,20 @@ import { MemoryService } from './memory.service';
 
 const THREAD_KEY = 'ba_chat_thread';
 
+function randomId(): string {
+  try {
+    if (typeof crypto !== 'undefined' && typeof (crypto as any).randomUUID === 'function') {
+      return (crypto as any).randomUUID();
+    }
+  } catch {}
+  const tpl = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+  return tpl.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   constructor(private memories: MemoryService) {}
@@ -18,9 +32,9 @@ export class ChatService {
 
   addUserMessage(text: string) {
     const thread = this.getThread();
-    const msg: ChatMessage = { id: crypto.randomUUID(), role: 'user', text, timestamp: new Date().toISOString() };
+    const msg: ChatMessage = { id: randomId(), role: 'user', text, timestamp: new Date().toISOString() };
     thread.messages.push(msg);
-    const reply: ChatMessage = { id: crypto.randomUUID(), role: 'bot', text: this.replyText(text), timestamp: new Date().toISOString() };
+    const reply: ChatMessage = { id: randomId(), role: 'bot', text: this.replyText(text), timestamp: new Date().toISOString() };
     thread.messages.push(reply);
     localStorage.setItem(THREAD_KEY, JSON.stringify(thread));
     return { msg, reply };

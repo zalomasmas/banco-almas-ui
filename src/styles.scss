@@ -24,7 +24,9 @@ body {
   color-scheme: light;
   margin: 0;
   height: 100%;
-  background: url('/assets/img/onboarding-bg.jpg') center / cover no-repeat fixed;
+  background:
+    linear-gradient(180deg, rgba(33,37,41,0.45), rgba(33,37,41,0.45)),
+    url('/assets/img/onboarding-bg.jpg') center / cover no-repeat fixed;
   font-family: "Acumin Variable Concept", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   color: #ffffff;
 }

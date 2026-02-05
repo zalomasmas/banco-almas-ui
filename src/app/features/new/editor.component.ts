@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -38,6 +38,22 @@ export class NewEditorComponent {
     if (!arr.length) return null;
     const byId = arr.find(a => a.id === this.selectedAttachmentId);
     return byId || arr[arr.length - 1];
+  }
+  @ViewChild('titleInput') titleInput?: ElementRef<HTMLInputElement>;
+  @ViewChild('textInput') textInput?: ElementRef<HTMLTextAreaElement>;
+  openTitleEditor() {
+    this.titleActive = true;
+    setTimeout(() => this.titleInput?.nativeElement?.focus(), 0);
+  }
+  closeTitleEditor() {
+    this.titleActive = false;
+  }
+  openTextEditor() {
+    this.textActive = true;
+    setTimeout(() => this.textInput?.nativeElement?.focus(), 0);
+  }
+  closeTextEditor() {
+    this.textActive = false;
   }
 
   onImages(evt: Event) {

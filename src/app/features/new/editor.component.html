@@ -1,9 +1,6 @@
 <div class="new-page">
-  <div class="container py-4">
-    <div class="top-bar d-flex align-items-center mb-2">
-      <a class="back" routerLink="/app/nuevo/privacidad-fecha"><span class="material-icons">arrow_back</span></a>
-      <div class="brand ms-2">Crear nuevo recuerdo</div>
-    </div>
+  <div class="container">
+    
     <div class="media-panel">
       <div class="panel-content" *ngIf="currentAttachment as att; else emptyPanel">
         <img *ngIf="att.type==='image'" [src]="att.url" alt="image" />
@@ -11,45 +8,65 @@
         <audio *ngIf="att.type==='audio'" [src]="att.url" controls></audio>
       </div>
       <ng-template #emptyPanel>
-        <div class="empty">
-          <span class="material-icons">photo_camera</span>
-        </div>
+        <div class="empty"></div>
       </ng-template>
       <div class="overlay-tools">
-        <button class="tool" type="button" (click)="galleryInput.click()"><span class="material-icons">image</span></button>
-        <button class="tool" type="button" (click)="cameraInput.click()"><span class="material-icons">photo_camera</span></button>
-        <button class="tool" type="button" (click)="videoInput.click()"><span class="material-icons">videocam</span></button>
-        <button class="tool" type="button" (click)="audioInput.click()"><span class="material-icons">music_note</span></button>
-        <button class="tool" type="button" (click)="toggleRecording()"><span class="material-icons">{{ isRecording ? 'stop' : 'mic' }}</span></button>
+        <a class="tool back" title="Volver" routerLink="/app/nuevo/privacidad-fecha">
+          <span class="material-icons">arrow_back</span>
+        </a>
+        <div class="overlay-tools-main">
+          <button class="tool" type="button" (click)="galleryInput.click()"><span class="material-icons">image</span></button>
+          <button class="tool" type="button" (click)="cameraInput.click()"><span class="material-icons">photo_camera</span></button>
+          <button class="tool" type="button" (click)="videoInput.click()"><span class="material-icons">videocam</span></button>
+          <button class="tool" type="button" (click)="audioInput.click()"><span class="material-icons">music_note</span></button>
+          <button class="tool" type="button" (click)="toggleRecording()"><span class="material-icons">{{ isRecording ? 'stop' : 'mic' }}</span></button>
+        </div>
+        <a class="tool save" title="Guardar recuerdo" routerLink="/app/nuevo/confirmacion">
+          <span class="material-icons">arrow_forward</span>
+        </a>
         <input #galleryInput class="d-none" type="file" accept="image/*" multiple (change)="onImages($event)" />
         <input #cameraInput class="d-none" type="file" accept="image/*" capture="environment" (change)="onImages($event)" />
         <input #videoInput class="d-none" type="file" accept="video/*" (change)="onVideos($event)" />
         <input #audioInput class="d-none" type="file" accept="audio/*" (change)="onAudioFiles($event)" />
       </div>
-      <div class="overlay-title" [class.collapsed]="!titleActive && !wiz.title">
+      <div class="overlay-title" (click)="openTitleEditor()">
+        <div class="overlay-display" [class.placeholder]="!wiz.title">{{ wiz.title || 'Titulo' }}</div>
+      </div>
+      <div class="overlay-text" (click)="openTextEditor()">
+        <div class="overlay-text-display" [class.placeholder]="!wiz.text">
+          {{ wiz.text || '¿Qué deseas recordar hoy?' }}
+        </div>
+      </div>
+    </div>
+    <div class="title-modal" *ngIf="titleActive">
+      <div class="modal-backdrop" (click)="closeTitleEditor()"></div>
+      <div class="modal-box">
+        <button class="modal-close" type="button" (click)="closeTitleEditor()"><span class="material-icons">close</span></button>
         <input
-          class="overlay-input"
+          #titleInput
+          class="modal-input"
           placeholder="Titulo"
           [(ngModel)]="wiz.title"
-          (focus)="titleActive=true"
-          (blur)="titleActive=!!wiz.title"
+          (blur)="closeTitleEditor()"
+          (keydown.enter)="closeTitleEditor()"
+          (keydown.escape)="closeTitleEditor()"
         />
       </div>
-      <div class="overlay-text" [class.collapsed]="!textActive && !wiz.text">
+    </div>
+    <div class="text-modal" *ngIf="textActive">
+      <div class="modal-backdrop" (click)="closeTextEditor()"></div>
+      <div class="modal-box large">
+        <button class="modal-close" type="button" (click)="closeTextEditor()"><span class="material-icons">close</span></button>
         <textarea
-          class="overlay-textarea"
-          rows="3"
-          placeholder="¿Que deseas recordar hoy?"
+          #textInput
+          class="modal-textarea"
+          rows="10"
           [(ngModel)]="wiz.text"
-          (focus)="textActive=true"
-          (blur)="textActive=!!wiz.text"
+          (blur)="closeTextEditor()"
+          (keydown.escape)="closeTextEditor()"
         ></textarea>
       </div>
     </div>
 
-    <a class="cta" routerLink="/app/nuevo/confirmacion">
-      <span>Guardar recuerdo</span>
-      <span class="action"><span class="material-icons">arrow_forward</span></span>
-    </a>
   </div>
 </div>
